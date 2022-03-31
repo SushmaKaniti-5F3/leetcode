@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution{
+  public:
+     // Function to find majority element in the array
+    // a: input array
+    // size: size of input array
+    int majorityElement(int a[], int size)
+    {
+        if(size==1)
+        {
+            return a[0];
+        }
+        int n=*max_element(a,a+size);
+        vector<int>count(n+1,0);
+        for(int i=0;i<size;i++)
+        {
+          count[a[i]]+=1;
+        }
+        int num=*max_element(count.begin(),count.end());
+        int k=0;
+        for(int i=0;i<n+1;i++)
+        {
+            if(num==count[i])
+            if(size/2<num)
+            {
+            return i;
+            }
+            
+        }
+        return -1;
+    }
+};
+
+
+int main(){
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int n;
+        cin >> n;
+        int arr[n];
+        
+        for(int i = 0;i<n;i++){
+            cin >> arr[i];
+        }
+        Solution obj;
+        cout << obj.majorityElement(arr, n) << endl;
+    }
+
+    return 0;
+}

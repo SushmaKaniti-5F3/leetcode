@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int n=nums.size();
+        int j=0;
+            if(n==1)j=0;
+            else if(nums[0]>nums[1])
+                j=0;
+            else if(nums[n-1]>nums[n-2])
+                j=n-1;
+            else
+            {
+            for(int i=1;i<n;i++)
+            {
+                if(nums[i]>nums[i-1] && nums[i]>nums[i+1])
+                {
+                    j=i;
+                    
+                }
+            }
+            }
+        
+        return j;
+
+    }
+};

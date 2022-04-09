@@ -1,1 +1,13 @@
-
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        s=""
+        s1=""
+        i=0,j=0;
+        n=len(word)
+        for i in range(0,n):
+            if(word[i]==ch):
+                s=s+i;
+            else:
+                s1=s1+i
+        s2=s[::-1]+s1;
+        return s2;

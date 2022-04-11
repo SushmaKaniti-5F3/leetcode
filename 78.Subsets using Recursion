@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void sequence(int ind,int n, vector<int> &ds,vector<int>& nums,vector<vector<int>>&ans)
+    {
+        if(ind==n)
+	{
+			ans.push_back(ds);
+		    return;
+	}
+	//logic to make a pick
+	ds.push_back(nums[ind]);
+	sequence(ind+1,n,ds,nums,ans);
+	ds.pop_back();
+
+	//logic to not make a pick
+	sequence(ind+1,n,ds,nums,ans);
+    }
+    
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>>ans;
+        vector<int>ds;
+        int n=nums.size();
+        sequence(0,n,ds,nums,ans);
+        return ans;
+    }
+};

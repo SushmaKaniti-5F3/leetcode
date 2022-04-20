@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        int n=nums.size(),ans=0,set_pos=1;
+        vector<int>a1;
+        vector<int>a2;
+        for(int i=0;i<n;i++)
+        {
+            ans^=nums[i];
+        }
+        while(ans)
+            {
+                if((ans&1)>0)
+                    break;
+                set_pos+=1;
+                ans=ans>>1;
+            }
+        for(int i=0;i<n;i++)
+        {
+            int temp=nums[i];
+            if((nums[i]&(1<<(set_pos-1)))>0)
+            a1.push_back(temp);
+            else
+            a2.push_back(temp);
+        }
+        vector<int>res;
+        int l1=0,l2=0;
+        for(auto it:a1)
+            l1^=it;
+        cout<<endl;
+        for(auto it:a2)
+        l2^=it;
+        cout<<l1<<" "<<l2;
+        res.push_back(l1);
+        res.push_back(l2);
+        return res;
+    }
+};

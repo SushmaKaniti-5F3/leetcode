@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findGCD(vector<int>& nums) {
+        int a,b,t;
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        a=nums[0],b=nums[n-1];
+        while(a!=0 and b!=0)
+        {
+            (a>b)?(a=a-b):(b=b-a);
+        }
+        return a+b;
+    }
+};

@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n=nums.size();
+        int l=*max_element(nums.begin(),nums.end());
+        vector<int>f(l+1,0);
+        for(int i=0;i<n;i++)
+        {
+            f[abs(nums[i])]++;
+        }
+        int m=max_element(f.begin(),f.end())-f.begin();
+        return m;
+    }
+};

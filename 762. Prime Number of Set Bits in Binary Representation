@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int countPrimeSetBits(int left, int right) {
+        int a,p,c=0;
+        vector<int>seive(right+1,1);
+        seive[0]=seive[1]=0;
+        for(int i=2;i*i<=right;i++)
+	    {
+            if(seive[i]==1)
+            {
+                for(int j=i*i;j<=right;j+=i)
+                    seive[j]=0;	
+            }
+	    }
+        for(int i=left;i<=right;i++)
+        {
+            a=i;
+            p=0;
+            while(a)
+            {
+                if(a&1)p+=1;
+                a=a>>1;
+            }
+            if(seive[p]==1)
+                c++;
+        }
+        return c;
+    }
+};

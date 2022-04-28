@@ -1,0 +1,16 @@
+#define m 32
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int ans=0;
+        bitset<m>a1(x);
+        bitset<m>a2(y);
+        string s1=a1.to_string();
+        string s2=a2.to_string();
+        for(int i=0;i<32;i++)
+        {
+            if(s1[i]!=s2[i])ans++;
+        }
+        return ans;
+    }
+};

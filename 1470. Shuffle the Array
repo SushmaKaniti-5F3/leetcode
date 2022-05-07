@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+         vector<int>d;
+        int i=0;
+        int j=n;
+        for(int k=0;k<n;k++)
+        {
+                d.push_back(nums[i]);
+                i++;
+                d.push_back(nums[j]);
+                j++;
+        }
+        return d;
+    }
+};

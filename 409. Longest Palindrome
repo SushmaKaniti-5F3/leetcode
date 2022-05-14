@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        map<char,int>c;
+        int n=s.size();
+        int ec=0,oc=0,f=0,g=0;
+        for(int i=0;i<n;i++)
+        {
+            c[s[i]]++;
+        }
+        if(c.size()==1)
+            for(auto i:c)
+                return i.second;
+        for(auto i:c)
+        {
+            cout<< i.first<< " " <<i.second<<"\n";
+            if(i.second==1 && f==0)
+            {
+                oc++;
+                f=1;
+            }
+            else if(i.second%2==0)
+            {
+                ec+=i.second;
+            }
+            else if(i.second%2!=0 && i.second!=1)
+            {
+                g=1;
+                oc+=i.second-1;
+            }  
+        }
+        if(f==0 and g==1)
+            oc++;
+        return ec+oc;
+    }
+};

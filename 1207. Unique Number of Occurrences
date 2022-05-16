@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        map<int,int>m;
+        vector<int>ans;
+        int n=arr.size();
+        for(int i=0;i<n;i++)
+        {
+            m[arr[i]]++;
+        }
+        for(auto it:m)
+        {
+            ans.push_back(it.second);
+        }
+        sort(ans.begin(),ans.end());
+        int t=ans.size();
+        for(int i=0;i<t-1;i++)
+        {
+            if(ans[i]==ans[i+1])
+                return 0;
+        }
+        return 1;
+    }
+};
